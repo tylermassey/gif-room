@@ -1,0 +1,3 @@
+<app-login *ngIf="!hasJoined"
+  (onJoin)="onJoin($event)"></app-login>
+<app-room *ngIf="hasJoined" [user]="user"><app-room>
