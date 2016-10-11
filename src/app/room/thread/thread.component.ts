@@ -17,7 +17,10 @@ export class ThreadComponent implements OnInit {
   }
 
   watchThread() {
-    this.threadSub = this.af.database.list('/thread').subscribe(thread => {
+    this.threadSub = this.af.database.list('/thread', {
+      query: {
+        limitToLast: 5
+      }}).subscribe(thread => {
       this.thread = thread;
     });
   }

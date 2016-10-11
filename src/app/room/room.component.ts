@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RoomComponent implements OnInit {
 
-  @Input() user: string;
+  @Input() userName: string;
 
   constructor() { }
 

@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./gif-compose.component.css']
 })
 export class GifComposeComponent implements OnInit {
-  @Input() user: string;
+  @Input() userName: string;
   thread = this.af.database.list('/thread');
   message: '';
 
@@ -24,7 +24,7 @@ export class GifComposeComponent implements OnInit {
   submit() {
     this.getGif(this.message).subscribe(gif => {
       console.log(gif);
-      this.thread.push({ user: this.user, url: gif });  
+      this.thread.push({ user: this.userName, url: gif });  
     });
     
   }
@@ -32,7 +32,7 @@ export class GifComposeComponent implements OnInit {
   getGif(message: string) {
     let query = encodeURIComponent(message);
     let endpoint = `http://api.giphy.com/v1/gifs/translate?s=${query}&api_key=dc6zaTOxFJmzC`;
-    return this.http.get(endpoint).map(res => res.json().data.images.downsized.url);
+    return this.http.get(endpoint).map(res => res.json().data.images.downsized_medium.url);
   }
 
 }

@@ -1,22 +1,17 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  user: string;
+export class LoginComponent {
+  userInput: string;
 
-  @Output() onJoin = new EventEmitter<string>();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Output() onJoinEvent = new EventEmitter<string>();
 
   join() {
-    this.onJoin.emit(this.user);
+    this.onJoinEvent.emit(this.userInput);
   }
 
 }
